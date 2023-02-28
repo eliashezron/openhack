@@ -4,6 +4,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 library Pairing {
@@ -212,73 +213,81 @@ contract Verifier {
     function verifyingKey() internal pure returns (VerifyingKey memory vk) {
         vk.alpha = Pairing.G1Point(
             uint256(
-                0x1b05c5cb8a944d1860b8090319126a99bcdb146370ea93d2f1a2b2852a9ce675
+                0x285c2142ec8499b5171aa94b414764742f3234a19b84b67a12453c0c30423d58
             ),
             uint256(
-                0x23d9ff28c36771b9e5e3cb107c5a361667577a817dc8ed7057dae8bba3d7d9d9
+                0x12074641120e5b7d863a3811cc286b1f4c157ae079944a6a9a7bd0b2660115c7
             )
         );
         vk.beta = Pairing.G2Point(
             [
                 uint256(
-                    0x19b6e5bdad4cf84bb9fa7ecbf26bafbc5e536b2310578d6945583bfa42d1da6c
+                    0x05c526f199e33673da2b5f65246f5d0c50e49f16dab3132263f2647b93ddf9f4
                 ),
                 uint256(
-                    0x0b7d99f98f20b88a20060fd3148c2a4f4918b1e07f923671ed293b140e9bb87e
+                    0x2432354abf66cb796acb135a6e6fb728828e40433bd890b34449107df691809c
                 )
             ],
             [
                 uint256(
-                    0x2b5faf1c663816498186e87e215da46ae16d80bac0ad46ffaf8efcca8190cc82
+                    0x1558ff1bb7130e90c767296a88e43132012eb5fe7448db9fe3bbceb6f943a6ea
                 ),
                 uint256(
-                    0x1fba6c19e4f939670b54a811ab526e7d823d6ac21448e128ff5783a580489213
+                    0x2ecfac2002c7f5a11135fcc56ee81579c5678207a7778e574374200818f7568f
                 )
             ]
         );
         vk.gamma = Pairing.G2Point(
             [
                 uint256(
-                    0x1560a4524dd819ff1fa9d430868e0e1c521d83abee65c3e7df939ad763040f0e
+                    0x19cd9fe8c004b23a341d2fbdf12c362bd3a78f2f9419dcab7b22ddb4c31d6bd7
                 ),
                 uint256(
-                    0x106e209459d27bd6cddd95fe87466a64a137e6109fd8a1b191d9f3baeaf3395b
+                    0x0d8e7d3fbb7c693a3fb47575898a9179c3f5f16313ebe1e21fdfd38b104a6837
                 )
             ],
             [
                 uint256(
-                    0x0f7ca988dc267b1b6d9f96c8ae934efc0db7040b116d63981c8d173bf9206b80
+                    0x297d410b57f7cad76d3fb81d34313c7cd6eeb71e7ddab421cbc02a8d9958fe84
                 ),
                 uint256(
-                    0x264907f40ddaa40b624c719b21a0aebd10ddc427d7837db436c5d1c924c6bf52
+                    0x2fdf8ff2dfd0fc758152ee06ba919809d0ffaef50fcc8fc89e54e1ae1915e323
                 )
             ]
         );
         vk.delta = Pairing.G2Point(
             [
                 uint256(
-                    0x259086b1450df8e7b7aaa2fdf587d57e3d5e2cc588fadeb55f3a179ba2ac86d9
+                    0x18e26939d09b4a7aac0905be9ed03e0a184e8d8739b12f537ba261cabe04ad72
                 ),
                 uint256(
-                    0x06be2ac2570eb5a38e6172ba90bac0954ce96da910a8fbd93eaa5be5c279853b
+                    0x2279b01e5fe09135c6d0976ed22bd80fb689a2d710f915618b4bf182068e3312
                 )
             ],
             [
                 uint256(
-                    0x1ce694c47dd1262a9c690dab0c2230651ac66c8ec76d2f13e64f1eb2f7f46a33
+                    0x290b3eb16c87ca78bbbe893efb4eda80b9e2fee29af51016fc406ea9ce9e7fcc
                 ),
                 uint256(
-                    0x147ea1d66c1b7ff12f2400dd27f2ee3fa25ce3b3ad578b28dd9495401ccebf68
+                    0x2b7655923095a38e3ff08374afef528697041788921e259401f3464a33e1a4b0
                 )
             ]
         );
-        vk.gamma_abc = new Pairing.G1Point[](1);
+        vk.gamma_abc = new Pairing.G1Point[](2);
         vk.gamma_abc[0] = Pairing.G1Point(
             uint256(
-                0x2389e0cc5fe6b430fe55ecd50ee526a461c3ba5b9909fc3571519d48e08233bc
+                0x0cbad508de91370b97cba383062caffe21a6e9f853521df27f9da24e8f4639ac
             ),
             uint256(
-                0x12800221bedf9c44daff3dd7fb951b7b5fa67c1010a385da56aa03a1bbb7a233
+                0x1c5faad67ff02d90bc59fdb2a4c55c8efe131f33ec2a119d7e0ca8444bf6225b
+            )
+        );
+        vk.gamma_abc[1] = Pairing.G1Point(
+            uint256(
+                0x16747dbe93619ed1e58214862bd67df1dad9afa3c96352e5793ad9d4fb05563a
+            ),
+            uint256(
+                0x1f68fafa28044e580696f0393dc04403d49656820b2921212b0740e6a6ff03dc
             )
         );
     }
@@ -316,9 +325,16 @@ contract Verifier {
         return 0;
     }
 
-    function verifyTx(Proof memory proof) public view returns (bool r) {
-        uint256[] memory inputValues = new uint256[](0);
+    function verifyTx(Proof memory proof, uint256[1] memory input)
+        public
+        view
+        returns (bool r)
+    {
+        uint256[] memory inputValues = new uint256[](1);
 
+        for (uint256 i = 0; i < input.length; i++) {
+            inputValues[i] = input[i];
+        }
         if (verify(inputValues, proof) == 0) {
             return true;
         } else {

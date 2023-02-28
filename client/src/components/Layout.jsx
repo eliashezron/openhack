@@ -1,21 +1,34 @@
-import { ethers } from 'ethers'
+import { shortenAddress, useEthers, useLookupAddress } from '@usedapp/core'
+import React, { useEffect, useState } from 'react'
 
 const LayoutComponent = ({ children }) => {
-  function connect() {
-    if (window.ethereum) {
-      window.ethereum.request({ method: 'eth_requestAccounts' })
+  const [rendered, setRendered] = useState('')
+  const { ens } = useLookupAddress()
+  const { account, activateBrowserWallet, deactivate } = useEthers()
+  useEffect(() => {
+    if (ens) {
+      setRendered(ens)
+    } else if (account) {
+      setRendered(shortenAddress(account))
     } else {
-      console.log('Please install MetaMask!')
+      setRendered('')
     }
-  }
+  }, [account, ens, setRendered])
   return (
     <div className="flex flex-1 flex-col relative bg-primaryBg w-full">
       <nav className="w-full h-16 px-10 flex top-0 left-0 right-0 fixed bg-primaryBg shadow-sm border-b-1 border-primaryLight flex-row items-center justify-end">
         <button
           className="bg-primaryLight px-4 py-2 rounded-md text-primaryText font-medium "
-          onClick={connect}
+          onClick={() => {
+            if (!account) {
+              activateBrowserWallet()
+            } else {
+              deactivate()
+            }
+          }}
         >
-          Connect wallet
+          {rendered === '' && 'Connect Wallet'}
+          {rendered !== '' && rendered}
         </button>
 
         {/* <div className="bg-pink-300 px-4 py-2 rounded-md text-white font-medium ">
